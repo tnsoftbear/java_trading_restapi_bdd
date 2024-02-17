@@ -44,11 +44,11 @@ To run the REST API server locally, you can use Maven or Docker:
 
 ```sh
 # Using Maven
-mvnw clean spring-boot:run
-
-# Using Maven (alternative)
 mvn clean package
 java -jar ./target/trading_demo-0.0.1-SNAPSHOT.jar
+
+# Using Maven wrapper
+./mvnw clean spring-boot:run
 
 # Using Docker
 docker compose build
@@ -65,7 +65,7 @@ Read user list for API checking: `curl http://127.0.0.1:8080/api/v1/users`
 mvn test
 
 # Or using Maven wrapper
-mvnw test
+./mvnw test
 ```
 
 ### Test with reports
@@ -75,7 +75,7 @@ mvnw test
 mvn verify
 
 # Or using Maven wrapper
-mvnw verify
+./mvnw verify
 
 # Via docker
 docker build -t trading_demo_bdd_test -f ./Dockerfile.runtest .
@@ -84,7 +84,7 @@ docker run trading_demo_bdd_test
 docker run -it trading_demo_bdd_test bash
 ```
 
-Observe HTML reports in
+#### Observe HTML reports
 
 * `target/site/jacoco/index.html` Jacoco coverage report
 
@@ -94,8 +94,6 @@ Observe HTML reports in
 
 ![20240215-add-user-and-search-report.png](doc/i/20240215-add-user-and-search-report.png)
 ![20240215-all-steps-report.png](doc/i/20240215-all-steps-report.png)
-
-* [trivago/cluecumber](https://github.com/trivago/cluecumber/)
 
 * `target/cucumber-report/cucumber.html`
 
@@ -150,6 +148,11 @@ Observe HTML reports in
 ```
 
 * delete security: DELETE: http://localhost:8080/api/v1/security/delete/sec-name
+
+## Links
+
+* [Github: Cluecumber](https://github.com/trivago/cluecumber/)
+* [JaCoCo: Documentation](https://www.jacoco.org/jacoco/trunk/doc/)
 
 ## Contributing
 

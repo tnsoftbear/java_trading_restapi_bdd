@@ -3,7 +3,7 @@
   services:
     test_runner:
       build: .
-      image: trading_demo_java_restapi
-      container_name: trading_demo_java_bdd_test_runner
+      image: java_trading_restapi_bdd_image
+      container_name: java_trading_restapi_bdd_container
       ports:
         - "8080:8080"
