@@ -1,6 +1,7 @@
 package org.example.trading_demo.controller;
 
 import lombok.AllArgsConstructor;
+import org.example.trading_demo.aspect.LogExecutionTime;
 import org.example.trading_demo.model.CustomerOrder;
 import org.example.trading_demo.model.stored_order.StoredOrder;
 import org.example.trading_demo.model.Trade;
@@ -18,6 +19,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/v1/order")
 @AllArgsConstructor
+@LogExecutionTime
 public class StoredOrderController {
     private final StoredOrderRepository storedOrderRepository;
     private final OrderService orderService;

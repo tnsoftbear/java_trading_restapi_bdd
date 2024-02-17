@@ -1,6 +1,7 @@
 package org.example.trading_demo.controller;
 
 import lombok.AllArgsConstructor;
+import org.example.trading_demo.aspect.LogExecutionTime;
 import org.example.trading_demo.model.Security;
 import org.example.trading_demo.repository.SecurityRepository;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/security")
 @AllArgsConstructor
+@LogExecutionTime
 public class SecurityController {
     private final SecurityRepository securityRepository;
 

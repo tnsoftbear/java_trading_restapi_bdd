@@ -1,6 +1,7 @@
 package org.example.trading_demo.controller;
 
 import lombok.AllArgsConstructor;
+import org.example.trading_demo.aspect.LogExecutionTime;
 import org.example.trading_demo.model.User;
 import org.example.trading_demo.service.user.UserService;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/users")
 @AllArgsConstructor
+@LogExecutionTime
 public class UserController {
     private final UserService userService;
 
