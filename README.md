@@ -9,6 +9,8 @@ Welcome to the Trading Demo REST API! This application provides a RESTful API fo
 - **Testing**: Cucumber BDD test coverage
 - **Reports**: Jacoco coverage report, Cluecumber report, and Cucumber HTML report
 
+See `/src` folder structure in [this document](doc/src_tree.md).
+
 ## System Overview
 
 * **Functionality**: Trade Operations
