@@ -1,0 +1,9 @@
+  version: "3"
+
+  services:
+    test_runner:
+      build: .
+      image: trading_demo_java_restapi
+      container_name: trading_demo_java_bdd_test_runner
+      ports:
+        - "8080:8080"
