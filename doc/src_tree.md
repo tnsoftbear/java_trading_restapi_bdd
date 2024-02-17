@@ -1,3 +1,4 @@
+```
 src
 ├── main
 │   ├── java
@@ -62,5 +63,4 @@ src
             │   └── trade.feature
             └── user
                 └── user.feature
-
-31 directories, 32 files
+```
