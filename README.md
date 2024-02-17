@@ -103,7 +103,10 @@ docker run -it trading_demo_bdd_test bash
 
 ## Manual requests
 
+* post buy order: POST: http://localhost:8080/api/v1/order/buy
 * post buy order and trade: POST: http://localhost:8080/api/v1/order/buy_and_trade
+
+Payload example:
 
 ```json
 {
@@ -114,7 +117,10 @@ docker run -it trading_demo_bdd_test bash
 }
 ```
 
+* post sell order: POST: http://localhost:8080/api/v1/order/sell
 * post sell order and trade: POST: http://localhost:8080/api/v1/order/sell_and_trade
+
+Payload example:
 
 ```json
 {
@@ -124,11 +130,17 @@ docker run -it trading_demo_bdd_test bash
   "userName": "user3"
 }
 ```
+
 * list orders: GET: http://localhost:8080/api/v1/order
+* find orders by ids: GET: http://localhost:8080/api/v1/order/find_by_ids/1,2
+* delete order by id: DELETE: http://localhost:8080/api/v1/order/delete/1 
+* drop all orders: DELETE: http://localhost:8080/api/v1/order/truncate
 
 * list users: GET: http://localhost:8080/api/v1/users
 
-`curl -X GET http://localhost:8080/api/v1/users`
+```sh
+curl -X GET http://localhost:8080/api/v1/users
+```
 
 * add user: POST: http://localhost:8080/api/v1/users/save
 
