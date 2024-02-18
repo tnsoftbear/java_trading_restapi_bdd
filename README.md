@@ -10,6 +10,7 @@ Welcome to the Trading Demo REST API! This application provides a RESTful API fo
 * 📊 **Reports**: Jacoco coverage report, Cluecumber report, and Cucumber HTML report.
 * 🚀 **API**: Access Swagger UI at <http://localhost:8080/swagger-ui/index.html> for testing requests and API specs.
 * 🐳 **Containerization**: `docker compose up` available.
+* ⏱️ **Profiling**: Tracking the execution time of endpoints with the help of AOP.
 
 See `/src` folder structure in [this document](doc/src_tree.md).
 
@@ -39,6 +40,15 @@ DB Schema is defined in `src/main/resources/schema.sql`, and DB is preloaded wit
 * **User**: Users have the ability to place orders for buying or selling securities.
 * **Order**: Orders are entities containing attributes such as ID, user, security, type, price, quantity, and fulfillment status. These orders represent intentions to buy or sell securities within the system.
 * **Trade**: Trades are entities that are created when two or more orders are matched, resulting in an actual transaction taking place within the system.
+
+## Logging Execution Time
+
+In this program, we've implemented a custom annotation `@LogExecutionTime` utilizing the AOP approach in Java.
+This annotation allows us to track the execution time of methods.  
+With `@LogExecutionTime`, you have the flexibility to annotate either entire classes, 
+thereby influencing all their public methods, or target specific methods individually.  
+Under the hood, an adept aspect associated with `@LogExecutionTime` diligently measures the duration of method executions.
+If any method exceeds the predefined threshold of 300 milliseconds, insightful logs are generated, offering invaluable insights into performance bottlenecks and potential optimizations.  
 
 ## Getting Started
 
