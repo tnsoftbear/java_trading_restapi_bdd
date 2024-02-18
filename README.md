@@ -285,8 +285,8 @@ Response Body:
 ```json	
 {
   "id": 5,
-  "username": "user55",
-  "password": "password55"
+  "username": "user5",
+  "password": "pw5"
 }
 ```
 
