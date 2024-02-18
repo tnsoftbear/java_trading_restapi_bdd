@@ -1,4 +1,4 @@
-package org.example.trading_demo.test;
+package org.example.trading_demo.test.bdd;
 
 import io.cucumber.junit.CucumberOptions;
 import org.junit.platform.suite.api.ConfigurationParameter;

@@ -1,4 +1,4 @@
-package org.example.trading_demo.test.common;
+package org.example.trading_demo.test.bdd.common;
 
 import io.cucumber.java.After;
 import io.cucumber.java.AfterAll;

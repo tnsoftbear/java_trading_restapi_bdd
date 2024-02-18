@@ -1,4 +1,4 @@
-package org.example.trading_demo.test.security_feature;
+package org.example.trading_demo.test.bdd.security_feature;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;

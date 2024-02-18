@@ -5,9 +5,10 @@ Welcome to the Trading Demo REST API! This application provides a RESTful API fo
 ## Features
 
 - **Models**: User, Security, Order, Trade
-- **Database**: H2 in-memory database. Access the H2 console at [http://localhost:8080/h2-ui](http://localhost:8080/h2-ui)
+- **Database**: H2 in-memory database. Access the H2 console at <http://localhost:8080/h2-ui>
 - **Testing**: Cucumber BDD test coverage
 - **Reports**: Jacoco coverage report, Cluecumber report, and Cucumber HTML report
+- **Specs**: Access Swagger UI documentation at <http://localhost:8080/swagger-ui/index.html>
 
 See `/src` folder structure in [this document](doc/src_tree.md).
 
@@ -45,6 +46,9 @@ To run the REST API server locally, you can use Maven or Docker:
 ### Run REST API Server
 
 ```sh
+# Using Maven
+mvn spring-boot:run
+
 # Using Maven
 mvn clean package
 java -jar ./target/trading_demo-0.0.1-SNAPSHOT.jar
@@ -101,12 +105,26 @@ docker run -it trading_demo_bdd_test bash
 
 ![20240216-cucumber-report.png](doc/i/20240216-cucumber-report.png)
 
+## Documentation
+
+Access API documentation in running app by <http://localhost:8080/swagger-ui/index.html>.
+It is produced by [springdoc-openapi](https://springdoc.org/)
+
+![20240218-swagger-order.png](doc/i/20240218-swagger-order.png)
+
 ## Manual requests
 
-* post buy order: POST: http://localhost:8080/api/v1/order/buy
-* post buy order and trade: POST: http://localhost:8080/api/v1/order/buy_and_trade
+### Orders
 
-Payload example:
+#### Buy order
+
+POST: `http://localhost:8080/api/v1/order/buy`
+
+#### Buy order and trade
+
+POST: `http://localhost:8080/api/v1/order/buy_and_trade`
+
+Payload example (`CustomerOrder` object):
 
 ```json
 {
@@ -117,8 +135,13 @@ Payload example:
 }
 ```
 
-* post sell order: POST: http://localhost:8080/api/v1/order/sell
-* post sell order and trade: POST: http://localhost:8080/api/v1/order/sell_and_trade
+#### Sell order
+
+POST: `http://localhost:8080/api/v1/order/sell`
+
+#### Sell order and trade
+
+POST: `http://localhost:8080/api/v1/order/sell_and_trade`
 
 Payload example:
 
@@ -131,18 +154,96 @@ Payload example:
 }
 ```
 
-* list orders: GET: http://localhost:8080/api/v1/order
-* find orders by ids: GET: http://localhost:8080/api/v1/order/find_by_ids/1,2
-* delete order by id: DELETE: http://localhost:8080/api/v1/order/delete/1 
-* drop all orders: DELETE: http://localhost:8080/api/v1/order/truncate
+Request example:
 
-* list users: GET: http://localhost:8080/api/v1/users
+```sh
+curl -X 'POST' \
+  'http://localhost:8080/api/v1/order/sell_and_trade' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "price": 150,
+  "quantity": 40,
+  "securityName": "Apple",
+  "userName": "user3"
+}'
+```
+
+Response example (`Trade` object):
+
+```json
+{
+  "id": 1,
+  "price": 100,
+  "quantity": 40,
+  "sellOrder": {
+    "id": 3,
+    "price": 150,
+    "quantity": 40,
+    "type": "SELLER",
+    "fulfilled": true,
+    "user": {
+      "id": 3,
+      "username": "user3",
+      "password": "password3"
+    },
+    "security": {
+      "id": 1,
+      "name": "Apple"
+    }
+  },
+  "buyOrder": {
+    "id": 1,
+    "price": 100,
+    "quantity": 50,
+    "type": "BUYER",
+    "fulfilled": true,
+    "user": {
+      "id": 1,
+      "username": "user1",
+      "password": "password1"
+    },
+    "security": {
+      "id": 1,
+      "name": "Apple"
+    }
+  }
+}
+```
+
+#### List orders
+
+GET: `http://localhost:8080/api/v1/order`
+ 
+#### Find orders by ids
+
+GET: `http://localhost:8080/api/v1/order/find_by_ids/{order_id1},{order_id2},...`
+
+#### Delete order by id
+
+DELETE: `http://localhost:8080/api/v1/order/delete/{order_id}` 
+
+#### Drop all orders
+
+DELETE: `http://localhost:8080/api/v1/order/truncate`
+
+### Users
+
+#### List users
+
+GET: `http://localhost:8080/api/v1/users`
+
+Request example:
 
 ```sh
 curl -X GET http://localhost:8080/api/v1/users
 ```
 
-* add user: POST: http://localhost:8080/api/v1/users/save
+#### Add user
+
+POST: `http://localhost:8080/api/v1/users/save`
+
+Payload example:
 
 ```json
 {
@@ -151,9 +252,92 @@ curl -X GET http://localhost:8080/api/v1/users
 }
 ```
 
-* list securities: GET: http://localhost:8080/api/v1/security
-* find by name: GET: http://localhost:8080/api/v1/security/Apple
-* add security: POST: http://localhost:8080/api/v1/security/save
+Request example:
+
+```sh
+curl -X 'POST' \
+  'http://localhost:8080/api/v1/users/save' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "username": "user5",
+  "password": "pw5"
+}'
+```
+
+Response example:
+
+Status Code: `200`
+
+Response Body:
+
+```json	
+{
+  "id": 5,
+  "username": "user55",
+  "password": "password55"
+}
+```
+
+Response Headers:
+
+```shell
+connection: keep-alive 
+content-type: application/json 
+date: Sun,18 Feb 2024 16:42:16 GMT 
+keep-alive: timeout=60 
+transfer-encoding: chunked
+```
+
+#### Update user
+
+PUT: `http://localhost:8080/api/v1/users/update`  
+
+Payload example:
+
+```json
+{
+  "id": 5,
+  "username": "user55",
+  "password": "password55"
+}
+```
+
+Request example:
+
+```sh
+curl -X 'PUT' \
+  'http://localhost:8080/api/v1/users/update' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "id": 5,
+  "username": "user55",
+  "password": "password55"
+}'
+```
+
+#### Delete user
+
+DELETE: `http://localhost:8080/api/v1/users/delete/{username}`
+
+```sh
+curl -X 'DELETE' 'http://localhost:8080/api/v1/users/delete/user3'
+```
+
+### Securities
+
+#### List securities
+
+GET: `http://localhost:8080/api/v1/security`
+
+#### Find by name
+
+GET: `http://localhost:8080/api/v1/security/{security_name}`
+ 
+#### Add security
+
+POST: `http://localhost:8080/api/v1/security/save`
 
 ```json
 {
@@ -161,7 +345,9 @@ curl -X GET http://localhost:8080/api/v1/users
 }
 ```
 
-* delete security: DELETE: http://localhost:8080/api/v1/security/delete/sec-name
+#### Delete security
+
+DELETE: `http://localhost:8080/api/v1/security/delete/{security_name}`
 
 ## Links
 
