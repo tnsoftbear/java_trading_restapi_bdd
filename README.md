@@ -4,11 +4,12 @@ Welcome to the Trading Demo REST API! This application provides a RESTful API fo
 
 ## Features
 
-- **Models**: User, Security, Order, Trade
-- **Database**: H2 in-memory database. Access the H2 console at <http://localhost:8080/h2-ui>
-- **Testing**: Cucumber BDD test coverage
-- **Reports**: Jacoco coverage report, Cluecumber report, and Cucumber HTML report
-- **Specs**: Access Swagger UI documentation at <http://localhost:8080/swagger-ui/index.html>
+* 🏗️ **Models**: User, Security, Order, Trade.
+* 🛠️ **Database**: H2 in-memory database. Access the H2 console at <http://localhost:8080/h2-ui>.
+* 🥒 **Testing**: Cucumber BDD test coverage.
+* 📊 **Reports**: Jacoco coverage report, Cluecumber report, and Cucumber HTML report.
+* 🚀 **API**: Access Swagger UI at <http://localhost:8080/swagger-ui/index.html> for testing requests and API specs.
+* 🐳 **Containerization**: `docker compose up` available.
 
 See `/src` folder structure in [this document](doc/src_tree.md).
 

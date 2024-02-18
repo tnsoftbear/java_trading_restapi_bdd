@@ -6,6 +6,9 @@ src
 │   │       └── example
 │   │           └── trading_demo
 │   │               ├── TradingDemoApplication.java
+│   │               ├── aspect
+│   │               │   ├── LogExecutionTime.java
+│   │               │   └── LogExecutionTimeAspect.java
 │   │               ├── controller
 │   │               │   ├── SecurityController.java
 │   │               │   ├── StoredOrderController.java
@@ -45,16 +48,19 @@ src
     │       └── example
     │           └── trading_demo
     │               └── test
-    │                   ├── RunCucumberTests.java
-    │                   ├── common
-    │                   │   ├── CucumberConfiguration.java
-    │                   │   └── StepHooks.java
-    │                   ├── security_feature
-    │                   │   └── SecurityStepsTests.java
-    │                   ├── trade_feature
-    │                   │   └── TradeStepsTests.java
-    │                   └── user_feature
-    │                       └── UserStepsTests.java
+    │                   ├── bdd
+    │                   │   ├── RunCucumberTests.java
+    │                   │   ├── common
+    │                   │   │   ├── CucumberConfiguration.java
+    │                   │   │   └── StepHooks.java
+    │                   │   ├── security_feature
+    │                   │   │   └── SecurityStepsTests.java
+    │                   │   ├── trade_feature
+    │                   │   │   └── TradeStepsTests.java
+    │                   │   └── user_feature
+    │                   │       └── UserStepsTests.java
+    │                   └── rest
+    │                       └── UserControllerTest.java
     └── resources
         └── features
             ├── security

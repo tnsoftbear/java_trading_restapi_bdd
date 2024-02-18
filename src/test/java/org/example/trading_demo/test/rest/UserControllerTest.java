@@ -20,13 +20,9 @@ public class UserControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-//    @Value("${api.url}")
-//    private String urlBase;
-
     @Test
     public void test() {
         String url = "http://localhost:" + port + "/api/v1/users/save";
-        log.info("------- ========== testing url: {} ", url);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         User user = User.builder().username("restuser1").password("restpassword1").build();
