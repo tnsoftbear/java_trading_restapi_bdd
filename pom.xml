@@ -169,7 +169,7 @@
             <plugin>
                 <groupId>com.trivago.rta</groupId>
                 <artifactId>cluecumber-maven</artifactId>
-                <version>3.6.3</version>
+                <version>3.7.1</version>
                 <executions>
                     <execution>
                         <id>report</id>
